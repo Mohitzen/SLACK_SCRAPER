@@ -1,13 +1,13 @@
 # Stage 1: Build the Spring Boot application using a Maven or Gradle image
-FROM maven:3.8.7-openjdk-17 AS build 
+FROM maven:3.8.7-openjdk-17 AS build  # <-- No blank line here
 WORKDIR /app
 COPY . .
-RUN mvn clean package -DskipTests 
+RUN mvn clean package -DskipTests
 
 # Stage 2: Create the final lightweight runtime image
 FROM openjdk:17-jre-slim
 # A smaller JRE image for production
-COPY --from=build /app/target/*.jar app.jar 
+COPY --from=build /app/target/*.jar app.jar
 
 # Expose the port your Spring Boot app listens on (default is 8080)
 EXPOSE 8089
