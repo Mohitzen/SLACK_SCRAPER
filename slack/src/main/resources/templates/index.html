@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slack Profile Scraper Test</title>
+    <style>
+        /* Keep basic styling if you want, but for debugging, less is more */
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .error-message { color: red; background-color: #ffe0e0; padding: 10px; border: 1px solid red; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+    <h1>Slack Profile Scraper Test</h1>
+
+    <div th:if="${errorMessage}" class="error-message">
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+    <form action="/scrape" method="post">
+        <label for="emailId">Slack Email ID:</label><br>
+        <input type="email" id="emailId" name="emailId" required placeholder="e.g., your@email.com"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        // Check for error message on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const errorMessageDiv = document.querySelector('.error-message');
+            if (errorMessageDiv && errorMessageDiv.textContent.trim() === '') {
+                errorMessageDiv.style.display = 'none'; // Hide if no actual message
+            }
+        });
+    </script>
+</body>
+</html>
