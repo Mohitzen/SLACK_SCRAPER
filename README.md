@@ -1,1 +1,3 @@
 # SLACK_SCRAPER
+
+Enter your slack email, click submit, verify the captcha, enter OTP/microsoft authenticator code if prompted (try to be quick with that, else the application would stop), then the application will create and download locally an excel file containing the members' names and email present in a workspace. There are Thread.sleep methods in the program due to which you might have to wait even if your captcha verification is over. So, please be patient. Except the submit button you click initially, don't click any other submit/login buttons. (You need to enter only the OTP, if prompted and Authenticator code, if enabled)
